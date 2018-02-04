@@ -1,0 +1,13 @@
+name: common-variables
+main: net.twasiplugin.commonvariables.CommonVariables
+author: Twasi Team
+description: Basic variables (random, sender), allows registration of own variables.
+version: 1.0
+
+messageHandler: false
+
+# Register e.g. the command !hello
+commands:
+- varadd
+- varlist
+- vardel
