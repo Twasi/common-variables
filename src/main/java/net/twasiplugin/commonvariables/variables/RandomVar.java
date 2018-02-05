@@ -1,6 +1,7 @@
 package net.twasiplugin.commonvariables.variables;
 
 import net.twasi.core.interfaces.api.TwasiInterface;
+import net.twasi.core.models.Message.TwasiMessage;
 import net.twasi.core.plugin.api.TwasiUserPlugin;
 import net.twasi.core.plugin.api.TwasiVariable;
 
@@ -19,7 +20,7 @@ public class RandomVar extends TwasiVariable {
     }
 
     @Override
-    public String process(String name, TwasiInterface inf, String[] params) {
+    public String process(String name, TwasiInterface inf, String[] params, TwasiMessage message) {
         // Check length of arguments
         if (params.length != 2) {
             return "ERROR_NUMBER_OF_PARAMETERS";
