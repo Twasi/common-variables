@@ -6,6 +6,7 @@ import net.twasi.core.plugin.api.TwasiVariable;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomVar extends TwasiVariable {
     public RandomVar(TwasiUserPlugin owner) {
@@ -19,6 +20,24 @@ public class RandomVar extends TwasiVariable {
 
     @Override
     public String process(String name, TwasiInterface inf, String[] params) {
-        return "IM_A_RANDOM_NUMBER";
+        // Check length of arguments
+        if (params.length != 2) {
+            return "ERROR_NUMBER_OF_PARAMETERS";
+        }
+
+        int min, max;
+
+        // Try to parse numbers
+        try {
+            min = Integer.valueOf(params[0]);
+            max = Integer.valueOf(params[1]);
+        } catch (NumberFormatException e) {
+            return "ERROR_UNKNOWN_NUMBER";
+        }
+
+        // Generate random number
+        int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
+
+        return String.valueOf(randomNum);
     }
 }
